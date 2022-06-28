@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
 	public ProductResponse getById(int id) {
 		
 		Product product = productRepository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException());
+				.orElseThrow(() -> new EntityNotFoundException("The product doesn't exist"));
 	
 		return new ProductResponse(product.getId(), product.getName(), product.getDescription(), product.getPrice());
 	}
@@ -57,7 +57,7 @@ public class ProductServiceImpl implements ProductService {
 	public void updateById(int id, ProductRequest product) {
 		
 		Product savedProduct = productRepository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException());
+				.orElseThrow(() -> new EntityNotFoundException("The product doesn't exist"));
 		
 		savedProduct.setName(product.getName());
 		savedProduct.setDescription(product.getDescription());
@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
 	public void deleteById(int id) {
 
 		Product savedProduct = productRepository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException());
+				.orElseThrow(() -> new EntityNotFoundException("The product doesn't exist"));
 		
 		productRepository.delete(savedProduct);
 	}
