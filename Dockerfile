@@ -1,4 +1,4 @@
-FROM openjdk:11.0.15-slim-buster@sha256:217e6d238a23a64406dc39ad67482bd0262928144406baf57b69a38546550171 as build
+FROM maven:3.8.3-adoptopenjdk-11@sha256:22a19189017f08cb45f420bb93e820e5bde687b5b37f47be3d3924695276816e as build
 WORKDIR /app
 COPY pom.xml .
 COPY src /app/src
